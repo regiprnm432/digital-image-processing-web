@@ -37,10 +37,6 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route("/quiz")
-@nocache
-def quiz():
-    return render_template('quiz.html')
 
 @app.route("/puzzle", methods=["POST"])
 @nocache
@@ -57,6 +53,13 @@ def randomize_puzzle():
     # Panggil fungsi puzzleTidakRandom dengan ukuran dan padding yang telah diinisialisasi
     image_processing.randomize_puzzle("static/img/img_now.jpg", puzzle_size=(size, size), padding=10)
     return render_template("uploaded.html", file_path="img/img_now.jpg")
+
+@app.route("/table_rgb", methods=["POST"])
+@nocache
+def table_rgb():
+    rgb_values = image_processing.calculate_rgb_table()
+    enumerated_rgb = [(index, rgb) for index, rgb in enumerate(rgb_values)]
+    return render_template('uploaded.html', enumerated_rgb=enumerated_rgb)
 
 @app.route("/upload_img", methods=["POST"])
 @nocache
@@ -231,6 +234,23 @@ def thresholding():
     image_processing.threshold(lower_thres, upper_thres)
     return render_template("uploaded.html", file_path="img/img_now.jpg")
 
+@app.route("/lowpass", methods=["POST"])
+@nocache
+def lowpass():
+    image_processing.lowPassFilter()
+    return render_template("uploaded.html", file_path="img/img_now.jpg")
+
+@app.route("/highpass", methods=["POST"])
+@nocache
+def highpass():
+    image_processing.highPassFilter()
+    return render_template("uploaded.html", file_path="img/img_now.jpg")
+
+@app.route("/bandpass", methods=["POST"])
+@nocache
+def bandpass():
+    image_processing.bandPassFilter()
+    return render_template("uploaded.html", file_path="img/img_now.jpg")
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

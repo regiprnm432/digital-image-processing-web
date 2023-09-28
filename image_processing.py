@@ -399,6 +399,19 @@ def get_image_dimensions(image_path):
     except Exception as e:
         return None
 
+def calculate_rgb_table():
+    img_path = "static/img/img_now.jpg"
+    img = Image.open(img_path)
+    img_arr = np.asarray(img, dtype=np.uint8)
+    r, g, b = img_arr[:,:,0], img_arr[:,:,1], img_arr[:,:,2]
+    
+    # Menggabungkan semua nilai RGB ke dalam satu daftar
+    rgb_values = []
+    for i in range(img_arr.shape[0]):
+        for j in range(img_arr.shape[1]):
+            rgb_values.append((r[i][j], g[i][j], b[i][j]))
+    
+    return rgb_values
 
 def lowPassFilter():
     img_path = "static/img/img_now.jpg"
@@ -434,3 +447,25 @@ def highPassFilter():
     # Save the high-pass filtered image back to the same location
     high_pass_image.save("static/img/img_now.jpg")
 
+
+def bandPassFilter():
+    img_path = "static/img/img_now.jpg"
+    img = Image.open(img_path)
+    img_arr = np.asarray(img, dtype=np.uint8)
+
+     # Define the band-pass filter kernel
+    kernel = np.array([[0,-1,0],[-1,4,-1],[0,-1,0]])
+
+    # Apply the convolution operation using OpenCV's filter2D
+    band_pass_image = cv2.filter2D(img_arr,-1,kernel)
+
+    # Convert the NumPy array back to a PIL Image
+    band_pass_image = Image.fromarray(band_pass_image)
+
+    # Save the high-pass filtered image back to the same location
+    band_pass_image.save("static/img/img_now.jpg")
+
+
+
+
+    

@@ -9,18 +9,22 @@
     </aside>
 </div>
 <div class="p-2 flex-fill bd-highlight">
-    <table id="rgb-table" class="table table-sm d-none">
-      <thead>
+  <h1>RGB Values Table</h1>
+    <table border="1">
         <tr>
-          <th>R</th>
-          <th>G</th>
-          <th>B</th>
+            <th>Index</th>
+            <th>R</th>
+            <th>G</th>
+            <th>B</th>
         </tr>
-      </thead>
-      <tbody>
-        <!-- RGB values will be inserted here -->
-      </tbody>
+        {% for index, rgb in enumerated_rgb %}
+        <tr>
+            <td>{{ index }}</td>
+            <td>{{ rgb[0] }}</td>
+            <td>{{ rgb[1] }}</td>
+            <td>{{ rgb[2] }}</td>
+        </tr>
+        {% endfor %}
     </table>
-    </form>
 </div>
 {% endblock %}

@@ -3,22 +3,22 @@
     <li class="bd-link-group">
         <ul class="list-unstyled pb-3">
             <Strong>Umum</Strong>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('normal') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Normal</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('grayscale') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Grayscale</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('zoomin') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Zoom In</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('zoomout') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Zoom Out</button>
                 </form>
@@ -28,22 +28,22 @@
     <li class="bd-link-group">
         <ul class="list-unstyled pb-3">
             <Strong>Pergeseran</Strong>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('move_left') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Geser Kiri</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('move_right') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Geser Kanan</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('move_up') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Geser Atas</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('move_down') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Geser Bawah</button>
                 </form>
@@ -53,22 +53,22 @@
     <li class="bd-link-group">
         <ul class="list-unstyled pb-3">
             <Strong>Penerangan</Strong>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('brightness_multiplication') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Terang (*)</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('brightness_division') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Gelap (/)</button>
                  </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('brightness_addition') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Terang (+)</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('brightness_substraction') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Gelap (-)</button>
                 </form>
@@ -78,17 +78,17 @@
     <li class="bd-link-group">
         <ul class="list-unstyled pb-3">
             <Strong>Filter Gambar</Strong>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('edge_detection') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Edge Detection</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('blur') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Blur</button>
                 </form>
             </li>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('sharpening') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Sharpening</button>
                 </form>
@@ -98,7 +98,7 @@
     <li class="bd-link-group">
         <ul class="list-unstyled pb-3">  
             <Strong>Analisis Gambar</Strong>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('histogram_rgb') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Histogram</button>
                 </form>
@@ -108,7 +108,7 @@
     <li class="bd-link-group">
         <ul class="list-unstyled pb-3">  
             <Strong>Pemrosesan Gambar</Strong>
-            <li class="bd-link-group">
+            <li class="bd-link-group pb-2">
                 <form id="" action="{{ url_for('histogram_equalizer') }}" method="POST" enctype="multipart/form-data">
                     <button type="submit" class="btn btn-outline-primary">Histogram Equalizer</button>
                 </form>
@@ -149,7 +149,29 @@
                 </form>
             </li>
             <li class="bd-link-group pb-2">
-                <button id="showRgbTableButton" class="btn btn-outline-primary">Tabel RGB</button>
+                <form id="" action="{{ url_for('table_rgb') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-outline-primary">Table RGB</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+    <li class="bd-link-group">
+        <ul class="list-unstyled pb-3">
+            <Strong>Filter Spasial</Strong>
+            <li class="bd-link-group pb-2">
+                <form id="" action="{{ url_for('lowpass') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-outline-primary">Low Pass Filter</button>
+                </form>
+            </li>
+            <li class="bd-link-group pb-2">
+                <form id="" action="{{ url_for('highpass') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-outline-primary">High Pass Filter</button>
+                </form>
+            </li>
+            <li class="bd-link-group pb-2">
+                <form id="" action="{{ url_for('bandpass') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-outline-primary">Band Pass Filter</button>
+                </form>
             </li>
         </ul>
     </li>
