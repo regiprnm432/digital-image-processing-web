@@ -1,0 +1,11 @@
+{% extends "layout.html" %} 
+{% block body %}
+<div class="d-flex flex-row">
+    <main class="col-9 d-flex flex-row">
+        {% include "hasil_foto.html" %}
+    </main>
+    <aside class="col-3" style="max-height: calc(100vh - 50px); overflow-y: auto;">
+        {% include "efek.html" %}
+    </aside>
+</div>
+{% endblock %}

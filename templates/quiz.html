@@ -1,0 +1,118 @@
+{% extends "layout.html" %} {% block body %}
+<style>
+    .background{
+        background-color: #69fab6;
+    }
+</style>
+<div class="container text-center border rounded-4 shadow" style="margin-top: 50px; padding: 50px ;">
+    <h1 class="display-4 align-self-center">Crop Foto</h1>
+    <p class="lead">Pilih Foto</p>
+    <div class="">
+        <form id="" action="{{ url_for('upload_img') }}" method="POST" enctype="multipart/form-data">
+            <input class="col-6 border" name="file" type="file" id="inputGroupFile04" accept="image/*">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+<div class="conatiner-fluid p-2 mx-auto text-center align-self-center" style="margin-top: 50px;">
+    <div class="d-flex align-self-center mx-auto text-center">
+        <div class="p-2 align-self-center gap-2 mx-auto text-center">
+            <h5>Image Puzzle</h5>
+            <form id="" action="{{ url_for('puzzle') }}" method="POST" enctype="multipart/form-data">
+                <input type="number" id="size" name="size" min="1" required>
+                <button type="submit" class="btn btn-primary">puzzle</button>
+            </form>
+        </div>
+        <div class="p-2 align-self-center text-center mx-auto">
+            <h5>Puzzle Random</h5>
+            <form id="" action="{{ url_for('randomize_puzzle') }}" method="POST" enctype="multipart/form-data">
+                <input type="number" id="size" name="size" min="1" required>
+                <button type="submit" class="btn btn-primary">Randomize</button>
+            </form>
+        </div>
+    </div>
+    <div class="container-fluid text-center" style="margin-top: 20px;">
+        <div class="row text-center mx-auto"></div>
+            <div class="col-4 text-center mx-auto">
+                <h3 class="p-3">Hasil<h3>
+                <img class="img-fluid" src="{{ url_for('static', filename=file_path) }}" alt="image here">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <div class="p-2 flex-fill bd-highlight">
+        <button id="showRgbTableButton" class="btn btn-primary mt-3">Tabel RGB</button>
+        <table id="rgb-table" class="table table-sm d-none">
+          <thead>
+            <tr>
+              <th>R</th>
+              <th>G</th>
+              <th>B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- RGB values will be inserted here -->
+          </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+   const image = document.querySelector(".img-fluid");
+   const imageDimensions = document.getElementById("image-dimensions");
+   const rgbTableBody = document.querySelector("#rgb-table tbody");
+   const showRgbTableButton = document.getElementById("showRgbTableButton");
+   const rgbTable = document.getElementById("rgb-table");
+
+   // Wait for the image to load
+   image.addEventListener("load", function () {
+     const width = this.width;
+     const height = this.height;
+     imageDimensions.innerText = `Image Dimensions: ${width} x ${height}`;
+   });
+
+   showRgbTableButton.addEventListener("click", function () {
+     // Toggle the visibility of the RGB table
+     rgbTable.classList.toggle("d-none");
+
+     if (!rgbTable.classList.contains("d-none")) {
+       // Get RGB values from the image when the table is visible
+       const canvas = document.createElement("canvas");
+       const context = canvas.getContext("2d");
+       context.drawImage(image, 0, 0, image.width, image.height);
+       const imageData = context.getImageData(0, 0, image.width, image.height).data;
+
+       // Check if the image is grayscale
+       let isGrayscale = true;
+       for (let i = 0; i < imageData.length; i += 4) {
+         const r = imageData[i];
+         const g = imageData[i + 1];
+         const b = imageData[i + 2];
+         if (r !== g || g !== b) {
+           isGrayscale = false;
+           break;
+         }
+       }
+
+       // Update the RGB table with values or display a message for grayscale images
+       if (isGrayscale) {
+         rgbTableBody.innerHTML = "";
+         rgbTableBody.innerHTML = `<tr><td colspan="3">This is a grayscale image.</td></tr>`;
+       } else {
+         rgbTableBody.innerHTML = "";
+         for (let i = 0; i < imageData.length; i += 4) {
+           const r = imageData[i];
+           const g = imageData[i + 1];
+           const b = imageData[i + 2];
+
+           const row = document.createElement("tr");
+           row.innerHTML = `<td>${r}</td><td>${g}</td><td>${b}</td>`;
+           rgbTableBody.appendChild(row);
+         }
+       }
+     }
+   });
+ });
+</script>
+{% endblock %}

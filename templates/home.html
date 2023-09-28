@@ -1,0 +1,13 @@
+{% extends "layout.html" %} 
+{% block body %}
+<div class="container text-center border rounded-4 shadow" style="margin-top: 50px; padding: 50px ;">
+    <h1 class="display-4 align-self-center">Pengolahan Citra Digital</h1>
+    <p class="lead">Pilih Foto</p>
+    <div class="">
+        <form id="" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <input class="col-6 border" name="file" type="file" id="inputGroupFile04" accept="image/*">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
