@@ -383,21 +383,6 @@ def randomize_puzzle(image_path, puzzle_size, padding):
     # Save the assembled puzzle image
     puzzle_img.save("static/img/img_now.jpg")
 
-def get_image_rgb(image_path):
-    try:
-        with Image.open(image_path) as img:
-            rgb_values = list(img.getdata())
-            return rgb_values
-    except Exception as e:
-        return None
-
-def get_image_dimensions(image_path):
-    try:
-        with Image.open(image_path) as img:
-            width, height = img.size
-            return width, height
-    except Exception as e:
-        return None
 
 def calculate_rgb_table():
     img_path = "static/img/img_now.jpg"
